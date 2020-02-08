@@ -20,6 +20,15 @@ mvn spring-boot:run
 ```sh
 POST  /generate-plan 
 ```
+* Request body:
+
+Params | Data Type
+-------|-------
+loanAmount | Double
+nominalRate | Double
+duration | Integer
+startDate | LocalDateTime
+
 Enter Json request then Execute it.
 
 Sample request:
