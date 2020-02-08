@@ -1,8 +1,16 @@
 ## PLAN GENERATOR
 
 ## 1. Build & start application
+Build
 ```sh
 mvn clean package
+```
+Run Unit Test
+```sh
+mvn test
+```
+Start application
+```sh
 mvn spring-boot:run
 ```
 ## 2. Test with swagger-ui
