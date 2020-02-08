@@ -22,12 +22,12 @@ POST  /generate-plan
 ```
 * Request body:
 
-Params | Data Type
--------|-------
-loanAmount | Double
-nominalRate | Double
-duration | Integer
-startDate | LocalDateTime
+|Params | Data Type | Description |
+|-------|-------|-------| 
+|loanAmount | Double | Loan Amount |
+|nominalRate | Double | Nominal Rate (%) |
+|duration | Integer | Duration (months) |
+|startDate | LocalDateTime | Start Date |
 
 Enter Json request then Execute it.
 
