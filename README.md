@@ -1,14 +1,31 @@
-# PLAN GENERATOR
+## PLAN GENERATOR
 
-sample payload:
+## 1. Build & start application
+```sh
+mvn clean package
+mvn spring-boot:run
+```
+## 2. Test with swagger-ui
+- Open web browser, navigate to 
+[http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html )
+- Run API : 
+```sh
+POST  /generate-plan 
+```
+Enter Json request then Execute it.
+
+Sample request:
+```sh
 {
 "loanAmount": "5000",
 "nominalRate": "5.0",
 "duration": 24,
 "startDate": "2018-01-01T00:00:01Z"
 }
+```
 
-sample response
+Sample response 
+```sh
 [
   {
     "borrowerPaymentAmount": 219.36,
@@ -46,3 +63,4 @@ sample response
     "remainingOutstandingPrincipal": 0
   }
 ]
+```
