@@ -53,7 +53,6 @@ public class PaymentPlanControllerTest {
 
 	@Test
 	public void generatePlan() throws Exception {
-		// when(PaymentPlanHelper.generateLoan(request)).thenReturn(response);
 		String jsonReq = mapper.writeValueAsString(planRequest);
 		log.info(jsonReq);
 		planResponse = PaymentPlanHelper.generateLoan(planRequest);

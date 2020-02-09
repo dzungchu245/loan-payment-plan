@@ -12,12 +12,13 @@ import com.payment.plan.dzungchu.dto.PlanResponse;
  *
  */
 public class PaymentPlanHelper {
-	
-	private PaymentPlanHelper() {}
+
+	private PaymentPlanHelper() {
+	}
 
 	/**
-	 * @param duration number of months
-	 * @param nominalRate 
+	 * @param duration    number of months
+	 * @param nominalRate
 	 * @param loanAmount
 	 * @return
 	 */
@@ -32,19 +33,19 @@ public class PaymentPlanHelper {
 	 * @return
 	 */
 	private static double roundNumber(double annuity) {
-		return Math.round(annuity * 100)/ 100.00;
+		return Math.round(annuity * 100) / 100.00;
 	}
-	
+
 	/**
 	 * @param nominalRate
 	 * @param initOP
 	 * @return
 	 */
 	private static double calculateInterest(double nominalRate, double initOP) {
-		double interest = (nominalRate * 30 * initOP)/ (100.00 * 360.00);
+		double interest = (nominalRate * 30 * initOP) / (100.00 * 360.00);
 		return roundNumber(interest);
 	}
-	
+
 	/**
 	 * @param request
 	 * @return
@@ -52,8 +53,10 @@ public class PaymentPlanHelper {
 	public static List<PlanResponse> generateLoan(PlanRequest request) {
 		List<PlanResponse> result = new ArrayList<PlanResponse>();
 		double nominalRate = request.getNominalRate();
-		double annuity = calculateAnnuity(request.getDuration(), 
-				nominalRate, request.getLoanAmount());
+		if ((request.getDuration() <= 0) || (nominalRate <= 0.0) || (request.getLoanAmount() <= 0.0)) {
+			return result;
+		}
+		double annuity = calculateAnnuity(request.getDuration(), nominalRate, request.getLoanAmount());
 		double remainingOP = request.getLoanAmount();
 		double initOP;
 		double payment;
@@ -72,7 +75,7 @@ public class PaymentPlanHelper {
 			}
 			remainingOP = roundNumber(remainingOP - principal);
 			PlanResponse response = new PlanResponse(payment, date, initOP, interest, principal, remainingOP);
-			
+
 			result.add(response);
 			date.plusMonths(1);
 		}
