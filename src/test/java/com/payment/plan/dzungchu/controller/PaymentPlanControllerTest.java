@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
-//import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -28,7 +27,7 @@ import com.payment.plan.dzungchu.util.PaymentPlanHelper;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * TEST SalesControllerTest.
+ * TEST PaymentPlanControllerTest.
  */
 
 @RunWith(MockitoJUnitRunner.class)
