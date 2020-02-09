@@ -18,7 +18,7 @@ mvn spring-boot:run
 [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html )
 - Run API : 
 ```sh
-POST  /generate-plan 
+POST  http://localhost:8080/generate-plan 
 ```
 * Request body:
 
@@ -30,6 +30,8 @@ POST  /generate-plan
 |startDate | LocalDateTime | Start Date |
 
 Enter Json request then Execute it.
+
+#### Note: By the provided API information, we can also test it by external tool(Postman) or integrate it with other system    
 
 Sample request:
 ```sh
