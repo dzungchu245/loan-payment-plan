@@ -1,20 +1,17 @@
-package com.payment.plan.dzungchu.util;
+package com.payment.plan.dzungchu.service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.payment.plan.dzungchu.dto.PlanRequest;
 import com.payment.plan.dzungchu.dto.PlanResponse;
+import com.payment.plan.dzungchu.exception.BadRequestException;
 
-/**
- * @author dzungchu
- *
- */
-public class PaymentPlanHelper {
-
-	private PaymentPlanHelper() {
-	}
+@Service
+public class PaymentPlanService {
 
 	/**
 	 * @param duration    number of months
@@ -49,12 +46,14 @@ public class PaymentPlanHelper {
 	/**
 	 * @param request
 	 * @return
+	 * @throws BadRequestException
 	 */
-	public static List<PlanResponse> generateLoan(PlanRequest request) {
+	public List<PlanResponse> generateLoan(PlanRequest request) throws BadRequestException {
 		List<PlanResponse> result = new ArrayList<PlanResponse>();
 		double nominalRate = request.getNominalRate();
-		if ((request.getDuration() <= 0) || (nominalRate <= 0.0) || (request.getLoanAmount() <= 0.0)) {
-			return result;
+		if ((request.getDuration() <= 0) || (nominalRate <= 0.0) || (request.getLoanAmount() <= 0.0)
+				|| (request.getStartDate() == null)) {
+			throw new BadRequestException();
 		}
 		double annuity = calculateAnnuity(request.getDuration(), nominalRate, request.getLoanAmount());
 		double remainingOP = request.getLoanAmount();

@@ -83,3 +83,30 @@ Sample response
   }
 ]
 ```
+## 3. Exception Handler
+A valid request must be as following:
+- loanAmount > 0
+- nominalRate > 0
+- duration > 0
+- startDate is a valid date
+
+If request is invalid, for example
+
+```sh
+{
+"loanAmount": 0,
+"nominalRate": 0,
+"duration": 0,
+"startDate": ""
+}
+``` 
+then API will return response
+```sh
+{
+  "errors": [
+    "BAD_REQUEST"
+  ]
+}
+``` 
+
+
